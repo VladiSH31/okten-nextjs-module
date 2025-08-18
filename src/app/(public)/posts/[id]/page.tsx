@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import {Metadata} from "next";
 
 export const generateMetadata = async ({ params }: { params: { id: string } }): Promise<Metadata> => {
-    const { id } = params;
+    const { id } = await params;
 
     return {
         title: 'Post Metadata ' + id,
