@@ -1,4 +1,4 @@
-import React, {FC, use} from 'react';
+import React, {FC} from 'react';
 import {IUser} from "@/models/IUser";
 import Link from "next/link";
 
