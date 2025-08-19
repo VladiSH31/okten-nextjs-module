@@ -1,8 +1,10 @@
 import React, {FC} from 'react';
 import {Metadata} from "next";
+import {SearchParams} from "next/dist/server/request/search-params";
 
 type Props = {
-    params: { id: string }
+    params: Promise<{ id: string }>,
+    searchParams: Promise<SearchParams>
 }
 
 export const generateMetadata = async ({ params }: { params: { id: string } }): Promise<Metadata> => {
@@ -14,13 +16,20 @@ export const generateMetadata = async ({ params }: { params: { id: string } }): 
   };
 };
 
-const Page: FC<Props> = async ({params}) => {
-    const {id} = await params;
+const Page: FC<Props> = async ({searchParams}) => {
+    let {data} = await searchParams;
 
+    let obj = null;
+    if (typeof data === "string") {
+       obj = JSON.parse(data)
+    }
 
     return (
         <div>
-            User Page Content {id}
+            User Page Content
+            {
+                obj && <div>{obj.id} {obj.name}</div>
+            }
         </div>
     );
 };

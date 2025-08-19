@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {FC, use} from 'react';
 import {IUser} from "@/models/IUser";
 import Link from "next/link";
 
@@ -10,7 +10,7 @@ const UserComponent:FC<UserProps> = ({user}) => {
 
     return (
         <div>
-            <Link href={'/users/' + user.id.toString()}>{user.id} {user.name}</Link>
+            <Link href={{pathname: '/users/' + user.id.toString(), query: {data: JSON.stringify(user)}}}>{user.id} {user.name}</Link>
         </div>
     );
 };
