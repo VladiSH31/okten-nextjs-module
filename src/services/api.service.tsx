@@ -14,6 +14,9 @@ type ICreatCar = {
 export const createCar = async ({brand, price, year}:ICreatCar) => {
     return fetch('http://owu.linkpc.net/carsAPI/v1/cars', {
         method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
         body: JSON.stringify({
             brand: brand,
             price: price,

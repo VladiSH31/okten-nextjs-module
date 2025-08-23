@@ -12,7 +12,7 @@ const CarsComponent = async () => {
     return (
         <div>
             {
-                cars.map(car => <CarComponent car={car}/>)
+                cars.map(car => <CarComponent key={car.id} car={car}/>)
             }
         </div>
     );
