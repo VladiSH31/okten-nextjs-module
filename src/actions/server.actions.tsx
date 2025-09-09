@@ -1,7 +1,7 @@
 'use server';
 import {createCar} from "@/services/api.service";
 
-export const saveCar = async (formData: FormData) => {
+export const saveCar = async (formData: IFormProps) => {
 
     const car = {
         brand: formData.get('brand')?.toString() || '',
