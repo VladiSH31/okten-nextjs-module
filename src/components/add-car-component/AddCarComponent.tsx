@@ -1,7 +1,6 @@
 import React from 'react';
 import {saveCar} from "@/actions/server.actions";
 import {useForm} from "react-hook-form";
-import Joi from "joi";
 import {joiResolver} from "@hookform/resolvers/joi";
 import {carsValidator} from "@/validators/cars.validator";
 
