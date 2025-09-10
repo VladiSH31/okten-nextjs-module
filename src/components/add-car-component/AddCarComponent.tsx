@@ -1,10 +1,13 @@
+'use client';
+
 import React from 'react';
 import {saveCar} from "@/actions/server.actions";
 import {useForm} from "react-hook-form";
 import {joiResolver} from "@hookform/resolvers/joi";
 import {carsValidator} from "@/validators/cars.validator";
 
-interface IFormProps {
+
+export interface IFormProps {
     brand: string,
     price: number,
     year: number
@@ -22,7 +25,14 @@ const AddCarComponent = () => {
     });
 
     const customHandler = async (formDataProps: IFormProps) => {
-        await saveCar(formDataProps)
+        try {
+            const result = await saveCar(formDataProps);
+            console.log('Car created:', result);
+            alert('Car added successfully!');
+        } catch (error) {
+            console.error('Error creating car:', error);
+            alert('Failed to add car. See console for details.');
+        }
     };
     return (
         <div>
